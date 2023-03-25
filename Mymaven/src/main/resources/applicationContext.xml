@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+<!--spring环境搭建-->
+<!--实例化对象注入-->
+
+    <bean class="com.pojo.User" id="User"><!-- id对象名 class对象类型   -->
+
+    </bean>
+</beans>
