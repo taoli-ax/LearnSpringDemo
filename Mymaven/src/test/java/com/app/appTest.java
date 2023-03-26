@@ -30,4 +30,19 @@ public class appTest {
         user.setPhone("123456789");
         System.out.println(user.toString());
     }
+    @Test
+    public void testConstructor(){
+        // 通过无参构造生成实例
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        User u1 =(User)applicationContext.getBean("User");
+        System.out.println("无参构造生成实例："+u1);
+        // 静态工厂
+        User u2 =(User)applicationContext.getBean("User2");
+        System.out.println("静态工厂生成实例："+u2);
+        // 实例工厂
+        User u3=(User) applicationContext.getBean("User3");
+        System.out.println("实例工厂生成实例: "+u3);
+
+
+    }
 }
