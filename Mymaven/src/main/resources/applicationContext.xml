@@ -4,9 +4,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 <!--spring环境搭建-->
-<!--实例化对象注入-->
-
-    <bean class="com.pojo.User" id="User"><!-- id对象名 class对象类型   -->
-
+<!--Bean的3种生成方式-->
+    <!--构造器： id对象名 class类名   -->
+    <bean class="com.pojo.User" id="User">
+    </bean>
+    <!--静态工厂： id对象名 class类名   -->
+    <bean class="com.util.UserFactory" factory-method="getUser" id="User2">
+    </bean>
+    <!-- 实例工厂 ：id对象名 class类名 factory-bean工厂实例 factory-method实例的方法  -->
+    <bean class="com.util.UserFactory2"  id="UserFactory">
+    </bean>
+    <bean factory-bean="UserFactory" factory-method="getUser" id="User3">
     </bean>
 </beans>
