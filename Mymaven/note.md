@@ -14,3 +14,7 @@ IoC都是先读取xml文件并获取标签id和class的值，再反射clazz生�
 #### 注入的两种方式
 setter 和 constructor
 ps:自动装配没有成功
+
+
+#### FactoryBean
+服务变成了工厂方法，不需要关注复杂的内部逻辑

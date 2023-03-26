@@ -26,6 +26,8 @@
         <constructor-arg name="userDao" ref="userDao2"></constructor-arg>
     </bean>
 
+    <bean id="FactoryBean" class="com.util.UserServiceFactoryBean"></bean>
+
 
 
 </beans>
