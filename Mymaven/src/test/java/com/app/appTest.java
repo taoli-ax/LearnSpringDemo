@@ -57,5 +57,12 @@ public class appTest {
         userService.save();
     }
 
+    @Test
+    public void testFactoryBean(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService)applicationContext.getBean("FactoryBean");
+        userService.save();
+    }
+
 
 }
