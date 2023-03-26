@@ -6,7 +6,11 @@
 
     <groupId>org.example</groupId>
     <artifactId>Mymaven</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>myBatis</module>
+    </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
