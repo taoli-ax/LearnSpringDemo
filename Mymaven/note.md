@@ -18,3 +18,10 @@ ps:自动装配没有成功
 
 #### FactoryBean
 服务变成了工厂方法，不需要关注复杂的内部逻辑
+
+#### spring 注解 和 mybatis 注解
+有点酷的注解，好看又好玩
+@Service("yourService") @Autowired
+@Repository
+@select("select * from table")
+
