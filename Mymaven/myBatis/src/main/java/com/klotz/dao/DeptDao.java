@@ -1,6 +1,7 @@
 package com.klotz.dao;
 
 import com.klotz.pojo.Department;
+import com.klotz.pojo.DepartmentExpand;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -23,4 +24,6 @@ public interface DeptDao {
 
     @Select("select from department where name=#{name}")
     Department findOneByName(String name);
+
+    int countByExpand(DepartmentExpand departmentExpand);
 }

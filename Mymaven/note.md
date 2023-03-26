@@ -25,3 +25,5 @@ ps:自动装配没有成功
 @Repository
 @select("select * from table")
 
+#### 数据库逆向生成dao，pojo和mybatisMapper.xml ,需要下载intellij专业版
+插件名 mybatis-generator
