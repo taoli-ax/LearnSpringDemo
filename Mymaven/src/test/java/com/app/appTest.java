@@ -2,6 +2,7 @@ package com.app;
 
 import com.config.JavaConfig;
 import com.pojo.User;
+import com.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -42,7 +43,19 @@ public class appTest {
         // 实例工厂
         User u3=(User) applicationContext.getBean("User3");
         System.out.println("实例工厂生成实例: "+u3);
-
-
     }
+    @Test
+    public void testSetterDI(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService)applicationContext.getBean("userService1");
+        userService.save();
+    }
+    @Test
+    public void testConstructorDI(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService)applicationContext.getBean("userService2");
+        userService.save();
+    }
+
+
 }

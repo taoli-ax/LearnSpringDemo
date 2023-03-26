@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--spring环境搭建-->
 <!--Bean的3种生成方式-->
     <!--构造器： id对象名 class类名   -->
-    <bean class="com.pojo.User" id="User">
-    </bean>
+    <bean class="com.pojo.User" id="User" scope="singleton"></bean>
     <!--静态工厂： id对象名 class类名   -->
-    <bean class="com.util.UserFactory" factory-method="getUser" id="User2">
-    </bean>
+    <bean class="com.util.UserFactory" factory-method="getUser" id="User2"></bean>
     <!-- 实例工厂 ：id对象名 class类名 factory-bean工厂实例 factory-method实例的方法  -->
-    <bean class="com.util.UserFactory2"  id="UserFactory">
+    <bean class="com.util.UserFactory2"  id="UserFactory"></bean>
+    <bean factory-bean="UserFactory" factory-method="getUser" id="User3"></bean>
+
+<!--    1.setter注入-->
+    <bean id="userDao1" class="com.Dao.impl.UserDaoImpl"></bean>
+    <bean id="userService1" class="com.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao1"></property>
     </bean>
-    <bean factory-bean="UserFactory" factory-method="getUser" id="User3">
+<!--    2.构造器注入-->
+    <bean id="userDao2" class="com.Dao.impl.UserDaoImpl"></bean>
+    <bean id="userService2" class="com.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao2"></constructor-arg>
     </bean>
+
+
+
 </beans>
