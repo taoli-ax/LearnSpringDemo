@@ -7,3 +7,10 @@
 #### BeanFactory和ApplicationContext 两个容器
 IoC都是先读取xml文件并获取标签id和class的值，再反射clazz生成实例
 
+#### 创建Bean对象三种方式
+静态工厂，实例工厂，构造器
+
+
+#### 注入的两种方式
+setter 和 constructor
+ps:自动装配没有成功
