@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com"></context:component-scan>
 <!--spring环境搭建-->
 <!--Bean的3种生成方式-->
     <!--构造器： id对象名 class类名   -->
-    <bean class="com.pojo.User" id="User" scope="singleton"></bean>
+    <bean class="com.pojo.User" id="User"></bean>
     <!--静态工厂： id对象名 class类名   -->
     <bean class="com.util.UserFactory" factory-method="getUser" id="User2"></bean>
     <!-- 实例工厂 ：id对象名 class类名 factory-bean工厂实例 factory-method实例的方法  -->

@@ -1,5 +1,6 @@
 package com.app;
 
+import com.Dao.UserDao;
 import com.config.JavaConfig;
 import com.pojo.User;
 import com.service.UserService;
@@ -12,17 +13,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 public class appTest {
-    @Test
-    public void test(){
-        // 方式一
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        // 方式二
-        ApplicationContext applicationContext1=new AnnotationConfigApplicationContext(JavaConfig.class);
-        User user =(User)applicationContext.getBean("User");
-        user.setUsername("admin");
-        user.setPhone("123456789");
-        System.out.println(user.toString());
-    }
+//    @Test
+//    public void test(){
+//        // 方式一
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+//        // 方式二
+//        ApplicationContext applicationContext1=new AnnotationConfigApplicationContext(JavaConfig.class);
+//        User user =(User)applicationContext.getBean("User");
+//        user.setUsername("admin");
+//        user.setPhone("123456789");
+//        System.out.println(user.toString());
+//    }
     @Test
     public void BeanFactoryTest(){
         BeanFactory beanFactory=new XmlBeanFactory(new ClassPathResource("applicationContext.xml"));
@@ -31,37 +32,48 @@ public class appTest {
         user.setPhone("123456789");
         System.out.println(user.toString());
     }
-    @Test
-    public void testConstructor(){
-        // 通过无参构造生成实例
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        User u1 =(User)applicationContext.getBean("User");
-        System.out.println("无参构造生成实例："+u1);
-        // 静态工厂
-        User u2 =(User)applicationContext.getBean("User2");
-        System.out.println("静态工厂生成实例："+u2);
-        // 实例工厂
-        User u3=(User) applicationContext.getBean("User3");
-        System.out.println("实例工厂生成实例: "+u3);
-    }
-    @Test
-    public void testSetterDI(){
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService=(UserService)applicationContext.getBean("userService1");
-        userService.save();
-    }
-    @Test
-    public void testConstructorDI(){
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService=(UserService)applicationContext.getBean("userService2");
-        userService.save();
-    }
+//    @Test
+//    public void testConstructor(){
+//        // 通过无参构造生成实例
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+//        User u1 =(User)applicationContext.getBean("User");
+//        System.out.println("无参构造生成实例："+u1);
+//        // 静态工厂
+//        User u2 =(User)applicationContext.getBean("User2");
+//        System.out.println("静态工厂生成实例："+u2);
+//        // 实例工厂
+//        User u3=(User) applicationContext.getBean("User3");
+//        System.out.println("实例工厂生成实例: "+u3);
+//    }
+//    @Test
+//    public void testSetterDI(){
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+//        UserService userService=(UserService)applicationContext.getBean("userService1");
+//        userService.save();
+//    }
+//    @Test
+//    public void testConstructorDI(){
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+//        UserService userService=(UserService)applicationContext.getBean("userService2");
+//        userService.save();
+//    }
+
+//    @Test
+//    public void testFactoryBean(){
+//        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+//        UserService userService=(UserService)applicationContext.getBean("FactoryBean");
+//        userService.save();
+//    }
 
     @Test
-    public void testFactoryBean(){
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService=(UserService)applicationContext.getBean("FactoryBean");
+    public void testAnnotation(){
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext2.xml");
+//        UserDao userDao=(UserDao)applicationContext.getBean("userDaoImpl");
+//        userDao.save();
+        UserService userService=(UserService)applicationContext.getBean("userService1");
         userService.save();
+
+
     }
 
 
