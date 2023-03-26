@@ -2,6 +2,7 @@ package com.klotz.test;
 
 import com.klotz.dao.DeptDao;
 import com.klotz.pojo.Department;
+import com.klotz.pojo.DepartmentExpand;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -45,12 +46,27 @@ public class AppTest {
         sqlSession.close();
         System.out.println("update:"+n);
 
-    }@Test
+    }
+    @Test
     public void delete() throws IOException {
         SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatisConfig.xml"));
         SqlSession sqlSession=sqlSessionFactory.openSession();
         DeptDao deptDao=sqlSession.getMapper(DeptDao.class);
         deptDao.deleteByName("Sami");
+        sqlSession.commit();
+        sqlSession.close();
+
+
+    }
+    @Test
+    public void countByExpand() throws IOException {
+        SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatisConfig.xml"));
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        DeptDao deptDao=sqlSession.getMapper(DeptDao.class);
+        DepartmentExpand departmentExpand=new DepartmentExpand();
+        departmentExpand.setNameLike("%D%");
+        int n=deptDao.countByExpand(departmentExpand);
+        System.out.println("expand: "+n);
         sqlSession.commit();
         sqlSession.close();
 

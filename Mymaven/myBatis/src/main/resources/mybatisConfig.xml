@@ -18,6 +18,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="com.klotz.dao.DeptDao"></mapper>
+<!--        <mapper class="com.klotz.dao.DeptDao"></mapper>-->
+        <mapper resource="expandMybatis.xml"></mapper>
     </mappers>
 </configuration>
